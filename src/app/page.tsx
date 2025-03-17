@@ -10,7 +10,7 @@ type Transaction = {
 };
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log("HI", API_URL)
+
 export default function Home() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [filteredTransactions, setFilteredTransactions] = useState<Transaction[]>([]);
@@ -27,7 +27,7 @@ export default function Home() {
   // Fetch all transactions
   const fetchTransactions = async () => {
     try {
-      const response = await fetch(`${API_URL}/transactions`);
+      const response = await fetch(`${API_URL}/api/transactions`);
       console.log("HI")
       const data: Transaction[] = await response.json(); // Explicitly annotate response type
       setTransactions(data);
@@ -40,7 +40,7 @@ export default function Home() {
   // Fetch balance
   const fetchBalance = async () => {
     try {
-      const response = await fetch(`${API_URL}/balance`);
+      const response = await fetch(`${API_URL}/api/balance`);
       const data = await response.json();
       setBalance(data.balance);
     } catch (error) {
@@ -51,7 +51,7 @@ export default function Home() {
   // Fetch summary
   const fetchSummary = async () => {
     try {
-      const response = await fetch(`${API_URL}/summary`);
+      const response = await fetch(`${API_URL}/api/summary`);
       const data = await response.json();
       setSummary(data);
     } catch (error) {
@@ -69,7 +69,7 @@ export default function Home() {
         date: new Date().toISOString(), // Add current date
       };
       
-      const response = await fetch(`${API_URL}/transactions`, {
+      const response = await fetch(`${API_URL}/api/transactions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(transactionData),
@@ -88,7 +88,7 @@ export default function Home() {
   // Delete a transaction
   const deleteTransaction = async (id: string) => {
     try {
-      await fetch(`${API_URL}/transactions/${id}`, { method: "DELETE" });
+      await fetch(`${API_URL}/api/transactions/${id}`, { method: "DELETE" });
       fetchTransactions();
       fetchBalance();
       fetchSummary();
@@ -100,7 +100,7 @@ export default function Home() {
   // Export transactions as CSV
   const exportCSV = async () => {
     try {
-      const response = await fetch(`${API_URL}/transactions/export`);
+      const response = await fetch(`${API_URL}/api/transactions/export`);
       const blob = await response.blob();
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
