@@ -22,7 +22,7 @@ export default function Home() {
   const [filterDate, setFilterDate] = useState("");
   const [filterType, setFilterType] = useState("all");
 
-  const API_URL = `http://localhost:${process.env.BACKEND_PORT}`;
+  const API_URL = process.env.API_URL;
   // Fetch all transactions
   const fetchTransactions = async () => {
     try {
