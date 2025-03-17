@@ -9,6 +9,8 @@ type Transaction = {
   date: string;
 };
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+console.log("HI", API_URL)
 export default function Home() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [filteredTransactions, setFilteredTransactions] = useState<Transaction[]>([]);
@@ -22,11 +24,11 @@ export default function Home() {
   const [filterDate, setFilterDate] = useState("");
   const [filterType, setFilterType] = useState("all");
 
-  const API_URL = process.env.API_URL;
   // Fetch all transactions
   const fetchTransactions = async () => {
     try {
       const response = await fetch(`${API_URL}/transactions`);
+      console.log("HI")
       const data: Transaction[] = await response.json(); // Explicitly annotate response type
       setTransactions(data);
       setFilteredTransactions(data);
