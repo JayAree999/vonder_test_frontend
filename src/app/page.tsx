@@ -22,8 +22,7 @@ export default function Home() {
   const [filterDate, setFilterDate] = useState("");
   const [filterType, setFilterType] = useState("all");
 
-  const API_URL = "http://localhost:3000"; // Replace with your backend URL
-
+  const API_URL = `http://localhost:${process.env.BACKEND_PORT}`;
   // Fetch all transactions
   const fetchTransactions = async () => {
     try {
