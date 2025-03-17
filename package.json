@@ -1,30 +1,27 @@
 {
-  "name": "myapp",
-  "version": "0.0.0",
+  "name": "vonder_test_frontend",
+  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "json2csv": "^6.0.0-alpha.2",
-    "mongodb": "^6.14.2",
-    "mongoose": "^8.12.1",
-    "winston": "^3.17.0",
-    "express": "^4.21.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.2.2"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
-    "@types/json2csv": "^5.0.7",
-    "@types/mongodb": "^4.11.1",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^18.11.18",
-    "@types/winston": "^3.6.5"
-  },
-  "scripts": {
-    "start": "ts-node ./app.ts",
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.2",
+    "@eslint/eslintrc": "^3"
   }
 }
