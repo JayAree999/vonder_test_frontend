@@ -206,7 +206,7 @@ function LotDropdown({
   count,
   onClose,
 }: {
-  anchorRef: React.RefObject<HTMLDivElement>;
+  anchorRef: React.RefObject<HTMLDivElement | null>; // ← change this line;
   ranges: string[];
   allLots: string[];
   count: number;
@@ -315,7 +315,7 @@ function LotCell({ lotList }: { lotList: string }) {
 
       {open && (
         <LotDropdown
-          anchorRef={anchorRef}
+          anchorRef={anchorRef || null}
           ranges={ranges}
           allLots={allLots}
           count={count}
