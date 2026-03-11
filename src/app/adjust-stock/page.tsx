@@ -34,7 +34,6 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
 type TransactionRow = {
   _id?: string;
   id?: number;
-  _id?: string;
   type: "receive" | "pay" | "edit";
   TransactionType?: string;
   Begin46Date: string;
@@ -391,7 +390,7 @@ export default function AdjustStockPage() {
                   step="any"
                   min="0"
                   name="SUM"
-                  value={form.SUM}
+                  value={form.SUM ?? ""}
                   onChange={handleChange}
                   required
                   placeholder="0"
